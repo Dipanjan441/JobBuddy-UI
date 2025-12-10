@@ -1,0 +1,46 @@
+.root {
+  position: relative; /* Ensures twinkling stars are scoped to the logo */
+  display: inline-flex;
+  align-items: center;
+}
+
+.twinklingStars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.twinklingStars::before,
+.twinklingStars::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+  background-size: 5px 5px;
+  animation: twinkle 2s infinite ease-in-out alternate;
+  opacity: 0.5;
+}
+
+.twinklingStars::after {
+  animation-delay: 1s;
+  background-size: 7px 7px;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
+}
