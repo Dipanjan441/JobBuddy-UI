@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { Logo } from './logo/Logo';
+import { Logo } from '../../components/logo/Logo';
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
