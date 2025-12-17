@@ -2,9 +2,11 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { AuthState, AuthUser } from "../types";
 import { authService } from "../authService";
 
+const storedUser = authService.getAuthUserFromStorage();
+
 const initialState: AuthState = {
-    user: null,
-    isLoggedIn: false,
+    user: storedUser,
+    isLoggedIn: !!storedUser,
 }
 
 export const authSlicer = createSlice({

@@ -1,13 +1,12 @@
-import { Navbar } from './layout/Navbar'
-import Login from './login/Login'
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './routes/AppRouter'
 
 function App() {
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-8 pt-20">
-      <Navbar />
-      <Login />
-    </div>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   )
 }
 
