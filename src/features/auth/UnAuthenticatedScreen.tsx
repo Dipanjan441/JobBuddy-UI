@@ -2,25 +2,20 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import {Navbar} from "../layout/Navbar";
 
-interface AuthenticatedScreenProps {
+interface UnAuthenticatedScreenProps {
     children?: React.ReactNode;
 }
 
 /**
- * AuthenticatedScreen
+ * UnAuthenticatedScreen
  * - Uses existing layout/Navbar.tsx
  * - Redirects to /login when no auth token is found in localStorage
  * - Simple sidebar with user info and sign-out button
  * - Renders children in the main content area
  */
-const AuthenticatedScreen: React.FC<AuthenticatedScreenProps> = ({ children }) => {
+const UnAuthenticatedScreen: React.FC<UnAuthenticatedScreenProps> = ({ children }) => {
     const navigate = useNavigate();
 
-    const handleSignOut = () => {
-        localStorage.removeItem("authToken");
-        localStorage.removeItem("user");
-        navigate("/login", { replace: true });
-    };
 
     // derive a simple display name from localStorage user blob if present
     const userRaw = localStorage.getItem("user");
@@ -44,4 +39,4 @@ const AuthenticatedScreen: React.FC<AuthenticatedScreenProps> = ({ children }) =
     );
 };
 
-export default AuthenticatedScreen;
+export default UnAuthenticatedScreen;

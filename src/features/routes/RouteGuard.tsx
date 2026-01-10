@@ -3,6 +3,7 @@ import { useAppSelector } from '../../store/hooks';
 import { selectIsAuthLoggedIn } from '../auth/state/authSelector';
 import { Navigate, useLocation } from 'react-router-dom';
 import { HOME_ROUTE, LOGIN_ROUTE } from './routes';
+import AuthenticatedScreen from '../auth/AuthenticatedScreen';
 
 interface Props {
     children: React.ReactNode;
@@ -22,7 +23,9 @@ const RouteGuard = ({ guardType=AUTHENTICATION_TYPE.GENERAL, children }: Props) 
         return <Navigate to={HOME_ROUTE.path} replace />
     }
     //scenario 3: General route or all conditions met
-    return children;
+    return guardType === AUTHENTICATION_TYPE.UNAUTHENTICATE || guardType === AUTHENTICATION_TYPE.GENERAL ? 
+    <AuthenticatedScreen>{children}</AuthenticatedScreen> : 
+    children;
 }
 
 export default RouteGuard

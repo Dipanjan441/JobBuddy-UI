@@ -4,7 +4,8 @@
 @theme {
   /* font  */
   --font-display: "Plus Jakarta Sans", "sans-serif";
-  --font-body: "Inter", "sans-serif";
+  --font-fontBody: "Inter", "sans-serif";
+  --color-primaryColor: #3b82f6;
 
   --color-primary: #3b82f6;
   /* Adjustable blue */
@@ -15,22 +16,14 @@
   --color-brand-accent: #06b6d4;
 
   /* background gradient color  */
-  --gradient-background: radial-gradient(at 0% 0%, hsla(260, 100%, 85%, 1) 0, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(180, 100%, 85%, 1) 0, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(210, 100%, 85%, 1) 0, transparent 50%);
   --gradient-primary: linear-gradient(90deg, #4361EE 0%, #06b6d4 100%);
   --gradient-text: linear-gradient(90deg, #4361EE 0%, #3a0ca3 100%);
 }
 
-body {
-  background-image: var(--gradient-background);
-  background-attachment: fixed;
-  background-color: #ffffff;
-  /* Fallback */
-  color: var(--color-primary);
-  font-family: var(--font-body);
-  min-height: 100vh;
-  margin: 0;
+@layer base {
+  body {
+    @apply bg-[radial-gradient(at_0%_0%,hsla(260,100%,85%,1)_0,transparent_50%),radial-gradient(at_50%_0%,hsla(180,100%,85%,1)_0,transparent_50%),radial-gradient(at_100%_0%,hsla(210,100%,85%,1)_0,transparent_50%)] bg-fixed font-fontBody min-h-screen m-0;
+  }
 }
 
 h1,
@@ -48,4 +41,12 @@ input,
 textarea,
 select {
   font-family: var(--font-body);
+}
+
+@utility btn-primary {
+  @apply bg-linear-90 from-brand-blue to-brand-accent text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:opacity-90 transition-all transform hover:-translate-y-0.5 cursor-pointer;
+}
+
+@utility btn-secondary {
+  @apply px-5 py-2.5 rounded-full text-sm font-bold cursor-pointer text-brand-blue bg-transparent transition-all hover:bg-brand-blue/10;
 }

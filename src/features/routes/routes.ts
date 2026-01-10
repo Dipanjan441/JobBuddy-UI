@@ -1,3 +1,4 @@
+import NotFoundPage from "../app/NotFoundPage";
 import Home from "../home/Home";
 import Login from "../login/Login";
 import { AUTHENTICATION_TYPE, type AppRoute } from "./types";
@@ -16,7 +17,15 @@ export const HOME_ROUTE: AppRoute = {
     guard: AUTHENTICATION_TYPE.GENERAL
 }
 
+export const NOT_FOUND_ROUTE: AppRoute = {
+  name: 'Page not found',
+  path: '*',
+  component: NotFoundPage,
+  guard: AUTHENTICATION_TYPE.GENERAL
+}
+
 export const ROUTES = [
     LOGIN_ROUTE,
-    HOME_ROUTE
+    HOME_ROUTE,
+    NOT_FOUND_ROUTE,
 ]

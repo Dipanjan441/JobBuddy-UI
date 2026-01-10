@@ -3,7 +3,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { Logo } from '../../components/logo/Logo';
 
-export const Navbar = () => {
+interface Props {
+    isAuthenticated?: boolean;
+}
+
+export const Navbar = ({ isAuthenticated = false }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const navLinks = [
@@ -29,7 +33,7 @@ export const Navbar = () => {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className="text-gray-600 hover:text-[var(--color-primary)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                                    className="text-gray-600 hover:text-primaryColor px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                                 >
                                     {link.name}
                                 </a>
@@ -40,10 +44,14 @@ export const Navbar = () => {
                     {/* Desktop CTA */}
                     <div className="hidden md:block">
                         <div className="flex items-center space-x-4">
-                            <button className="text-gray-600 hover:text-[var(--color-primary)] font-medium text-sm px-4 py-2 transition-colors">
-                                Log in
-                            </button>
-                            <button className="bg-[image:var(--gradient-primary)] text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:opacity-90 transition-all transform hover:-translate-y-0.5 cursor-pointer">
+                            {
+                                isAuthenticated && (
+                                    <button className="btn-secondary">
+                                        Log in
+                                    </button>
+                                )
+                            }
+                            <button className="btn-primary">
                                 Get Started
                             </button>
                         </div>
@@ -53,7 +61,7 @@ export const Navbar = () => {
                     <div className="-mr-2 flex md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-[var(--color-primary)] hover:bg-white/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--color-primary)] transition-colors"
+                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-primaryColor hover:bg-white/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primaryColor transition-colors"
                         >
                             <span className="sr-only">Open main menu</span>
                             {isOpen ? <CloseIcon className="block h-6 w-6" /> : <MenuIcon className="block h-6 w-6" />}
@@ -70,17 +78,17 @@ export const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-gray-600 hover:text-[var(--color-primary)] hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                                className="text-gray-600 hover:text-primaryColor hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {link.name}
                             </a>
                         ))}
                         <div className="pt-4 pb-2 border-t border-gray-100 mt-4 space-y-2 px-3">
-                            <button className="w-full text-left text-gray-600 hover:text-[var(--color-primary)] font-medium px-3 py-2 rounded-md hover:bg-blue-50">
+                            <button className="w-[40%] btn-secondary">
                                 Log in
                             </button>
-                            <button className="w-full bg-[image:var(--gradient-primary)] text-white px-5 py-3 rounded-full text-base font-bold shadow-md hover:shadow-lg text-center mt-2">
+                            <button className="w-[40%] btn-primary">
                                 Get Started
                             </button>
                         </div>
