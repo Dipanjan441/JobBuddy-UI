@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import {Navbar} from "../layout/Navbar";
+import { Footer } from "../layout/Footer";
 
 interface UnAuthenticatedScreenProps {
     children?: React.ReactNode;
@@ -32,9 +33,11 @@ const UnAuthenticatedScreen: React.FC<UnAuthenticatedScreenProps> = ({ children 
     return (
         <>
             <Navbar />
-            <div className="flex h-[calc(100vh-64px)]">
+            {/* <div className="flex h-[calc(100vh-64px)]">
                 <main className="flex-1 p-6">{children}</main>
-            </div>
+            </div> */}
+            {children}
+            <Footer />
         </>
     );
 };

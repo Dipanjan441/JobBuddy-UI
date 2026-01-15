@@ -2,51 +2,111 @@
 @import "tailwindcss";
 
 @theme {
-  /* font  */
   --font-display: "Plus Jakarta Sans", "sans-serif";
-  --font-fontBody: "Inter", "sans-serif";
-  --color-primaryColor: #3b82f6;
-
-  --color-primary: #3b82f6;
-  /* Adjustable blue */
-  --color-background: #f0f9ff;
-  /* Light bluish background */
+  --font-body: "Inter", "sans-serif";
 
   --color-brand-blue: #4361EE;
   --color-brand-accent: #06b6d4;
+  --color-brand-deep: #3a0ca3;
 
-  /* background gradient color  */
-  --gradient-primary: linear-gradient(90deg, #4361EE 0%, #06b6d4 100%);
-  --gradient-text: linear-gradient(90deg, #4361EE 0%, #3a0ca3 100%);
-}
+  @keyframes float {
 
-@layer base {
-  body {
-    @apply bg-[radial-gradient(at_0%_0%,hsla(260,100%,85%,1)_0,transparent_50%),radial-gradient(at_50%_0%,hsla(180,100%,85%,1)_0,transparent_50%),radial-gradient(at_100%_0%,hsla(210,100%,85%,1)_0,transparent_50%)] bg-fixed font-fontBody min-h-screen m-0;
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-15px);
+    }
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button {
-  font-family: var(--font-display);
-  font-weight: 700;
+@layer base {
+  #root {
+    @apply flex flex-col min-h-screen;
+  }
 }
 
-input,
-textarea,
-select {
-  font-family: var(--font-body);
+/* --- BASE UI UTILITIES --- */
+@utility glass-panel {
+  @apply bg-white/40 backdrop-blur-xl border border-white/30 shadow-sm;
 }
 
 @utility btn-primary {
-  @apply bg-linear-90 from-brand-blue to-brand-accent text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:opacity-90 transition-all transform hover:-translate-y-0.5 cursor-pointer;
+  @apply bg-linear-to-r from-brand-blue to-brand-accent text-white px-6 py-3 rounded-full text-sm font-bold shadow-lg transition-all duration-300 hover:shadow-brand-blue/30 hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center justify-center gap-2;
 }
 
-@utility btn-secondary {
-  @apply px-5 py-2.5 rounded-full text-sm font-bold cursor-pointer text-brand-blue bg-transparent transition-all hover:bg-brand-blue/10;
+@utility btn-ghost {
+  @apply px-6 py-3 rounded-full text-sm font-bold text-brand-blue bg-transparent transition-all hover:bg-brand-blue/6 cursor-pointer flex items-center justify-center gap-2 border border-transparent hover:border-brand-blue transition-colors;
+}
+
+@utility nav-item {
+  @apply relative text-sm font-semibold text-slate-600 hover:text-brand-blue transition-colors after:content-[''] after:absolute after:w-0 after:h-0.5 after:bottom-[-4px] after:left-0 after:bg-brand-blue after:transition-all hover:after:w-full;
+}
+
+/* --- HERO SECTION --- */
+@utility hero-badge {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel !bg-brand-blue/5 text-brand-blue text-xs font-bold uppercase tracking-widest mb-10;
+}
+
+@utility hero-title {
+  @apply text-5xl md:text-8xl font-display font-extrabold tracking-tight leading-[0.95] mb-8 text-slate-900;
+}
+
+@utility hero-description {
+  @apply max-w-2xl mx-auto text-lg md:text-xl text-slate-500 font-medium mb-12;
+}
+
+@utility hero-mockup-frame {
+  @apply relative glass-panel rounded-[2.5rem] overflow-hidden aspect-video shadow-2xl bg-white/20;
+}
+
+/* --- FEATURES SECTION --- */
+@utility feature-card {
+  @apply p-8 bg-white/80 backdrop-blur-sm border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300;
+}
+
+@utility feature-icon-wrapper {
+  @apply w-14 h-14 bg-brand-blue/5 rounded-2xl flex items-center justify-center text-3xl mb-6 transition-all;
+}
+
+/* We handle the group hover manually to avoid Tailwind v4 utility resolution issues */
+.feature-card:hover .feature-icon-wrapper {
+  @apply bg-brand-blue text-white rotate-6;
+}
+
+/* --- PRICING SECTION --- */
+@utility pricing-card {
+  @apply p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-xl relative overflow-hidden flex flex-col transition-transform hover:scale-[1.01];
+}
+
+@utility pricing-card-pro {
+  @apply p-10 rounded-[2.5rem] bg-brand-blue text-white shadow-2xl relative overflow-hidden flex flex-col transform md:scale-105 z-10;
+}
+
+@utility pricing-price {
+  @apply text-5xl font-black tracking-tight;
+}
+
+/* --- FOOTER SECTION --- */
+@utility footer-container {
+  @apply bg-white/60 backdrop-blur-md border-t border-white/20 py-20 px-6 mt-auto relative z-10;
+}
+
+@utility footer-heading {
+  @apply font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest;
+}
+
+@utility footer-link {
+  @apply text-slate-500 hover:text-brand-blue transition-colors text-sm font-medium;
+}
+
+/* --- ANIMATIONS & DECORATION --- */
+@utility decoration-blob {
+  @apply absolute rounded-full blur-[120px] -z-10 opacity-60 pointer-events-none;
+}
+
+@utility animate-float {
+  animation: float 6s ease-in-out infinite;
 }
