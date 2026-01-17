@@ -12,7 +12,7 @@ interface Props {
 const RouteGuard = ({ guardType = AUTHENTICATION_TYPE.GENERAL, children }: Props) => {
     const location = useLocation();
     const isAuthenticated = useAppSelector(selectIsAuthLoggedIn);
-    console.log('RouteGuard - isAuthenticated:', isAuthenticated);
+    console.log('RouteGuard:', isAuthenticated);
     //scenario 1: User wants to access an authenticated route but is not logged in
     if (guardType === AUTHENTICATION_TYPE.AUTHENTICATE && !isAuthenticated) {
         return <Navigate to={LOGIN_ROUTE.path} state={{ from: location }} replace />

@@ -3,7 +3,7 @@ import React from 'react';
 const FEATURE_LIST = [
   { title: "ATS Optimization", description: "Our AI ensures your resume passes through Applicant Tracking Systems with a 99% success rate.", icon: "🎯" },
   { title: "Instant Tailoring", description: "Automatically adjust your resume for specific job descriptions with one click.", icon: "⚡" },
-  { title: "Gemini Intelligence", description: "Built on Google's latest Gemini 3 Flash model for superior writing and analysis.", icon: "🧠" },
+  { title: "AI Intelligence", description: "Built on the latest advanced intelligence models for superior writing and analysis.", icon: "🧠" },
   { title: "Modern Templates", description: "Choose from dozens of designer-crafted templates that recruiters actually love.", icon: "🎨" },
   { title: "Smart Cover Letters", description: "Generate persuasive cover letters that match your resume style and job tone.", icon: "✍️" },
   { title: "Skill Gap Analysis", description: "Get insights on what skills you're missing for your target career paths.", icon: "📊" }

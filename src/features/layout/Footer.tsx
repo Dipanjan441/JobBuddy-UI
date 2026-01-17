@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
         <div className="col-span-1">
           <Logo className="mb-6 scale-90 origin-left" />
           <p className="text-slate-500 text-sm font-medium leading-relaxed">
-            Revolutionizing the job market with Google Gemini AI. Helping professionals tell their story better.
+            Revolutionizing the job market with JobBuddy, an AI-powered application. Helping professionals tell their story better.
           </p>
         </div>
         <div>
@@ -33,13 +33,13 @@ export const Footer: React.FC = () => {
           <h4 className="footer-heading">Stay Updated</h4>
           <p className="text-xs text-slate-400 mb-4 font-medium">Get the latest career hacks in your inbox.</p>
           <div className="flex gap-2">
-            <input 
-              type="email" 
-              placeholder="you@email.com" 
+            <input
+              type="email"
+              placeholder="you@email.com"
               className="grow px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-blue/20 text-sm"
             />
             <button className="btn-primary p-3! rounded-xl!">
-               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </button>
           </div>
         </div>
