@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectAuthUser } from '../auth/state/authSelector';
 import { logout } from '../auth/state/authSlicer';
+import { SIGNIN_ROUTE } from '../routes/routes';
 
 export const ProfileMenu: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,7 @@ export const ProfileMenu: React.FC = () => {
 
     const handleLogout = () => {
         dispatch(logout());
-        navigate('/login');
+        navigate(SIGNIN_ROUTE.path);
         setIsOpen(false);
     };
 

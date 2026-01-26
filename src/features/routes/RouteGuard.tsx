@@ -2,7 +2,7 @@ import { AUTHENTICATION_TYPE } from './types';
 import { useAppSelector } from '../../store/hooks';
 import { selectIsAuthLoggedIn } from '../auth/state/authSelector';
 import { Navigate, useLocation } from 'react-router-dom';
-import { HOME_ROUTE, LOGIN_ROUTE } from './routes';
+import { HOME_ROUTE, SIGNIN_ROUTE } from './routes';
 
 interface Props {
     children: React.ReactNode;
@@ -15,7 +15,7 @@ const RouteGuard = ({ guardType = AUTHENTICATION_TYPE.GENERAL, children }: Props
     console.log('RouteGuard:', isAuthenticated);
     //scenario 1: User wants to access an authenticated route but is not logged in
     if (guardType === AUTHENTICATION_TYPE.AUTHENTICATE && !isAuthenticated) {
-        return <Navigate to={LOGIN_ROUTE.path} state={{ from: location }} replace />
+        return <Navigate to={SIGNIN_ROUTE.path} state={{ from: location }} replace />
     }
     //scenario 2: User wants to access an unauthenticated route but is logged in
     if (guardType === AUTHENTICATION_TYPE.UNAUTHENTICATE && isAuthenticated) {

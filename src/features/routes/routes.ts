@@ -2,15 +2,33 @@ import About from "../about/About";
 import Feature from "../app-feature/Feature";
 import NotFoundPage from "../app/NotFoundPage";
 import Home from "../home/Home";
-import Login from "../login/Login";
 import Pricing from "../pricing/Pricing";
 import Templates from "../templates/Templates";
 import { AUTHENTICATION_TYPE, LayoutType, type AppRoute } from "./types";
+import { SignUp } from "../signIn/SignUp";
+import { ForgotPassword } from "../signIn/ForgotPassword";
+import { SignIn } from "../signIn/SignIn";
 
-export const LOGIN_ROUTE: AppRoute = {
-    name: 'Login',
-    path: '/login',
-    component: Login,
+export const SIGNIN_ROUTE: AppRoute = {
+    name: 'SignIn',
+    path: '/signin',
+    component: SignIn,
+    guard: AUTHENTICATION_TYPE.UNAUTHENTICATE,
+    layout: LayoutType.BLANK
+}
+
+export const SIGNUP_ROUTE: AppRoute = {
+    name: 'Sign Up',
+    path: '/signup',
+    component: SignUp,
+    guard: AUTHENTICATION_TYPE.UNAUTHENTICATE,
+    layout: LayoutType.BLANK
+}
+
+export const FORGOT_PASSWORD_ROUTE: AppRoute = {
+    name: 'Forgot Password',
+    path: '/forgot-password',
+    component: ForgotPassword,
     guard: AUTHENTICATION_TYPE.UNAUTHENTICATE,
     layout: LayoutType.BLANK
 }
@@ -72,7 +90,9 @@ export const NAVIGATION_ROUTES = [
 
 export const ROUTES = [
     ...NAVIGATION_ROUTES,
-    LOGIN_ROUTE,
+    SIGNIN_ROUTE,
+    SIGNUP_ROUTE,
+    FORGOT_PASSWORD_ROUTE,
     HOME_ROUTE,
     NOT_FOUND_ROUTE,
 ]

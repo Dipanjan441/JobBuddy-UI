@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Logo } from '../../components/logo/Logo';
 import { ProfileMenu } from './ProfileMenu';
-import { LOGIN_ROUTE, NAVIGATION_ROUTES } from '../routes/routes';
+import { SIGNIN_ROUTE, NAVIGATION_ROUTES } from '../routes/routes';
 import { Link, useNavigate } from 'react-router-dom';
 
 interface Props {
@@ -44,7 +44,7 @@ export const Navbar: React.FC<Props> = ({ isLoggedIn = false }) => {
             <ProfileMenu />
           ) : (
             <>
-              <button onClick={() => navigate(LOGIN_ROUTE.path)} className="btn-ghost">Log In</button>
+              <button onClick={() => navigate(SIGNIN_ROUTE.path)} className="btn-ghost">Sign In</button>
             </>
           )}
           <button className="btn-primary">Build My Resume</button>
@@ -77,7 +77,7 @@ export const Navbar: React.FC<Props> = ({ isLoggedIn = false }) => {
               </div>
             ) : (
               <>
-                <button onClick={() => navigate(LOGIN_ROUTE.path)} className="btn-ghost py-4!">Log In</button>
+                <button onClick={() => navigate(SIGNIN_ROUTE.path)} className="btn-ghost py-4!">Sign In</button>
               </>
             )}
             <button className="btn-primary py-4!">Build My Resume</button>
