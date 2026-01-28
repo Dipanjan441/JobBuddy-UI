@@ -1,7 +1,10 @@
 import React from 'react';
 import { AuthLayout } from './AuthLayout';
+import { useNavigate } from 'react-router-dom';
+import { SIGNIN_ROUTE } from '../routes/routes';
 
 export const SignUp: React.FC = () => {
+    const navigate = useNavigate();
     return (
         <AuthLayout
             title="Create Account"
@@ -11,11 +14,11 @@ export const SignUp: React.FC = () => {
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <label className="auth-label">First Name</label>
-                        <input type="text" placeholder="John" className="auth-input" />
+                        <input type="text" placeholder="Dip" className="auth-input" />
                     </div>
                     <div>
                         <label className="auth-label">Last Name</label>
-                        <input type="text" placeholder="Doe" className="auth-input" />
+                        <input type="text" placeholder="Sen" className="auth-input" />
                     </div>
                 </div>
 
@@ -32,11 +35,11 @@ export const SignUp: React.FC = () => {
                     </p>
                 </div>
 
-                <div className="flex items-start gap-3 pt-2">
+                <div className="flex items-center gap-3 pt-2">
                     <input
                         type="checkbox"
                         id="terms"
-                        className="mt-1 w-5 h-5 rounded-lg border-slate-300 text-brand-blue focus:ring-brand-blue/20"
+                        className="auth-input-checkbox"
                     />
                     <label htmlFor="terms" className="text-xs font-semibold text-slate-500 leading-relaxed">
                         I agree to the <a href="#" className="text-brand-blue hover:underline">Terms of Service</a> and <a href="#" className="text-brand-blue hover:underline">Privacy Policy</a>.
@@ -56,8 +59,8 @@ export const SignUp: React.FC = () => {
                     Already have an account?{' '}
                     <button
                         type="button"
-                        onClick={() => console.log('signin')}
-                        className="text-brand-blue font-bold hover:underline"
+                        onClick={() => navigate(SIGNIN_ROUTE.path)}
+                        className="cursor-pointer text-brand-blue font-bold hover:underline"
                     >
                         Sign in here
                     </button>

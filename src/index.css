@@ -128,6 +128,10 @@
   @apply px-5 py-2.5 bg-white/95 backdrop-blur-md rounded-2xl shadow-sm border border-white/20 hover:scale-105 hover:-translate-y-0.5 transition-all duration-300;
 }
 
+@utility auth-input-checkbox {
+  @apply w-5 h-5 cursor-pointer rounded-lg border-slate-300 text-brand-blue focus:ring-brand-blue/20;
+}
+
 /* --- UTILITIES --- */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
